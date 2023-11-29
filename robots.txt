@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /registration
+Disallow: /recover_password

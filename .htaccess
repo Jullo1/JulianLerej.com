@@ -1,0 +1,45 @@
+ErrorDocument 404 /404
+
+RewriteEngine on
+# remove www from host
+RewriteCond %{HTTP_HOST} ^www\.(.+)
+RewriteCond %{HTTPS}s/%1 ^(on(s)|offs)/(.+)
+RewriteRule ^ http%2://%3%{REQUEST_URI} [L,R=301]
+
+# force HTTPS
+RewriteCond %{HTTPS} =off
+RewriteRule ^(login|foo|bar|…)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+Header set Access-Control-Allow-Origin "*"
+RewriteBase /
+
+RewriteRule ^home/?$                                        index.php?controller=home
+RewriteRule ^home/([/A-Za-z0-9_/]+)?$                       index.php?controller=home&function=$1
+
+RewriteRule ^ranking/?$                                     index.php?controller=ranking
+RewriteRule ^memotest/?$                                     index.php?controller=memotest
+RewriteRule ^trivias/?$                                        index.php?controller=trivias
+RewriteRule ^puzzle/?$                                        index.php?controller=puzzle
+RewriteRule ^rush/?$                                        index.php?controller=rush
+
+RewriteRule ^login/?$                                       index.php?controller=login
+RewriteRule ^login/([/A-Za-z0-9_/]+)?$                      index.php?controller=login&function=$1
+
+RewriteRule ^login2/?$                                       index.php?controller=login2
+RewriteRule ^login2/([/A-Za-z0-9_/]+)?$                      index.php?controller=login2&function=$1
+
+RewriteRule ^logout/?$                                       index.php?controller=logout
+
+RewriteRule ^recover_password/?$                            index.php?controller=recover_password
+RewriteRule ^recover_password/([/A-Za-z0-9_/]+)?$           index.php?controller=recover_password&function=$1
+
+RewriteRule ^registration/?$                                index.php?controller=registration
+RewriteRule ^registration/([/A-Za-z0-9_/]+)?$               index.php?controller=registration&function=$1
+
+RewriteRule ^main/?$                                       index.php?controller=main
+RewriteRule ^main/([/A-Za-z0-9_/]+)?$                      index.php?controller=main&function=$1
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^www\.julianlerej\.com$
+RewriteRule ^(.*)$ "https\:\/\/julianlerej\.com\/$1" [R=301,L]
+
