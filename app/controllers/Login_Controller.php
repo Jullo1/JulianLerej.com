@@ -34,6 +34,7 @@ class Login_Controller {
             $_SESSION["user_id"] = $user->id;
             $_SESSION["user_name"] = $user->name;
             $_SESSION["user_email"] = $user->email;
+            $_SESSION["user_guest"] = false;
             
         echo "<script>location.assign('../main')</script>";
         
@@ -44,20 +45,39 @@ class Login_Controller {
         
     }
     public function logout(){
+        if ($_SESSION["user_guest_name"])
+            $guestname = $_SESSION["user_guest_name"];
         session_destroy();
 		set_user_auth(false);
+		session_start();
+		if ($guestname) $_SESSION["user_guest_name"] = $guestname;
 		echo "<script>location.assign('../')</script>";
     }
     public function logoutlogin(){
+        $name = $_SESSION["user_name"];
         session_destroy();
 		set_user_auth(false);
+		session_start();
+		$_SESSION["user_guest_name"] = $name;
 		echo "<script>location.assign('../login')</script>";
     }
     
     public function guestlogin(){
-        set_user_auth(true);
-        $_SESSION["user_name"] = "Guests";
+        $user = (object) $_POST;
+        try{
+            $user = $this->model->get_user_guest($user);
+
+            set_user_auth(true);
+            $_SESSION["user_id"] = $user->id;
+            $_SESSION["user_name"] = $user->name;
+            $_SESSION["user_guest"] = true;
+            
         echo "<script>location.assign('../main')</script>";
+        
+        }catch (Exception $e) {
+            http_response_code(401);
+            echo $e->getMessage();
+        }
     }
 }
 

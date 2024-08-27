@@ -10,7 +10,10 @@
 	<meta name="author" content="Julian Lerej">
 	
     <link rel="stylesheet" type="text/css" href="app/views/assets/css/main.css"></link>
-	
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3726161690242397"
+     crossorigin="anonymous"></script>
+<!-- Adblock removal -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-3726161690242397?ers=1" nonce="NUeSIP8Kgyx2G0IIOo7NVQ"></script><script nonce="NUeSIP8Kgyx2G0IIOo7NVQ">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
 <!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
@@ -25,18 +28,19 @@
 </script>
 </head>
 
-<body style="overflow-x: hidden">
+<body style="overflow: hidden">
 <div class="mainContainer" style="margin-top: 40px;">
-    <button onclick="location.assign('login/logout')" class="button backButton" style="left: 5%; top: 0;">Back</button>
+    <button onclick="location.assign('login/logout')" class="button backButton" style="left: 5%; top: 0;">Logout</button>
+	<button class="button mainButton" onclick="location.assign('/app/views/Fist/');">Fist</button>
+	<button class="button mainButton" onclick="location.assign('rush');">Rush</button>
     <!--<img class="logoImage" src="" alt="Logo"></img>-->
 	<button class="button mainButton" onclick="location.assign('trivias');">Trivia</button>
 	<button class="button mainButton" onclick="location.assign('memotest');">Memotest</button>
 	<button class="button mainButton" onclick="location.assign('puzzle');">Puzzle</button>
-	<button class="button mainButton" onclick="location.assign('rush');">Rush</button>
+	<button class="button mainButton" onclick="location.assign('dm');">DM</button>
 	</br>
 </div>
-</br>
-<h1 style="margin-top: 100px;"><u>Leaderboards:</u></h1>
-<iframe id="ranking" src="app/views/ranking.php" style="height: 100%;"></iframe>
+<h1 style="margin-top: 130px;"><u>Leaderboard</u></h1>
+<iframe id="ranking" src="app/views/ranking.php" style="height: 320px;"></iframe>
 </body>
 </html>

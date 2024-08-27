@@ -11,14 +11,14 @@ class Event_Controller {
     
     public function index(){
         if (!is_user_auth()) {
-            echo "<script>location.replace('login')</script>";
+            echo "<script>location.replace('login/guest')</script>";
         }
         require VIEW . "main.html";
         
-        echo "<p style=\"font-size: 18px; margin-top:-150px; magin:auto;text-align:center;\">Logged in as: " . $_SESSION['user_name'] . "</p>";
-        
-        if ($_SESSION['user_name'] == "Guests")
-            echo "<button class=\"button smallButton\" style=\"margin-top:-10px;width:80%;\" onclick=\"location.assign('login/logoutlogin');\">Login</button>";
+        echo "<p style=\"font-size: 18px; margin-top:-185px; magin:auto;text-align:center;\">Playing as: " . $_SESSION['user_name'] . "</p>";
+            
+        if ($_SESSION['user_guest'])
+            echo "<p style=\"color:red;text-align:center;\"><b>You are not logged in. Log in to save your name in the leaderboards!</b></p></br><button class=\"button smallButton\" style=\"margin-top:-10px;width:80%;\" onclick=\"location.assign('login/logoutlogin');\">Login</button>";
     }
     
 

@@ -21,7 +21,17 @@ require_once "app/controllers/Recover_Pass_Controller.php";
 switch ($_GET["controller"]) {
     case '' :
     case '/' :
-        include VIEW . "start.html";
+        if ($_SESSION['user_name'] && $_SESSION['user_name'] != "Guests")
+        {
+        $event_controller = new Event_Controller();
+
+        switch ($_GET["function"]) {
+            case "location_selected":
+                $event_controller->location_selected();
+                exit;
+        }
+        $event_controller->index();
+        } else include VIEW . "start.html";
         exit;
 	case 'main' :
         $event_controller = new Event_Controller();
@@ -33,6 +43,11 @@ switch ($_GET["controller"]) {
         }
         $event_controller->index();
         exit;
+    case 'fistdl' :
+        echo "<script>location.replace('https://play.google.com/store/apps/details?id=com.Jullo.FistProject')</script>";
+    case 'policy':
+        require VIEW . "assets/documents/policy.html";
+        exit;
 	case 'memotest':
 		$game_controller = new Game_Controller();
         switch ($_GET["function"]) {
@@ -41,6 +56,9 @@ switch ($_GET["controller"]) {
                 exit;
         }
         $game_controller->index('memotest');
+		exit;
+	case 'fist':
+	    echo "<script>location.replace('app/views/Fist/')</script>";
 		exit;
 	case 'puzzle':
 		$game_controller = new Game_Controller();
@@ -68,6 +86,10 @@ switch ($_GET["controller"]) {
                 exit;
         }
         $game_controller->index('rush');
+		exit;
+	case 'DM':
+	case 'dm':
+	    echo "<script>location.replace('app/views/DM/')</script>";
 		exit;
 	case 'ranking':
 		echo "<script>location.replace('app/views/ranking.php')</script>";

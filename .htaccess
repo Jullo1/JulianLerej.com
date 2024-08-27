@@ -15,12 +15,16 @@ RewriteBase /
 
 RewriteRule ^home/?$                                        index.php?controller=home
 RewriteRule ^home/([/A-Za-z0-9_/]+)?$                       index.php?controller=home&function=$1
-
+RewriteRule ^fistdl/?$                                        index.php?controller=fistdl
 RewriteRule ^ranking/?$                                     index.php?controller=ranking
 RewriteRule ^memotest/?$                                     index.php?controller=memotest
+RewriteRule ^DM/?$                                        index.php?controller=DM
+RewriteRule ^dm/?$                                        index.php?controller=dm
 RewriteRule ^trivias/?$                                        index.php?controller=trivias
 RewriteRule ^puzzle/?$                                        index.php?controller=puzzle
 RewriteRule ^rush/?$                                        index.php?controller=rush
+RewriteRule ^fist/?$                                        index.php?controller=fist
+RewriteRule ^policy/?$                                        index.php?controller=policy
 
 RewriteRule ^login/?$                                       index.php?controller=login
 RewriteRule ^login/([/A-Za-z0-9_/]+)?$                      index.php?controller=login&function=$1
@@ -40,6 +44,7 @@ RewriteRule ^main/?$                                       index.php?controller=
 RewriteRule ^main/([/A-Za-z0-9_/]+)?$                      index.php?controller=main&function=$1
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^julianlerej\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.julianlerej\.com$
-RewriteRule ^(.*)$ "https\:\/\/julianlerej\.com\/$1" [R=301,L]
+RewriteRule ^/?$ "https\:\/\/julianlerej\.com\/" [R=301,L]
 

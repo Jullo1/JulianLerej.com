@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.Jullo.FistProject",
+      "sha256_cert_fingerprints": [
+        "44:6E:81:2C:C2:32:86:A8:A5:53:91:00:7A:D6:65:03:48:5D:9D:93:36:5C:41:59:AA:6C:DB:4E:D9:67:A2:C6"
+      ]
+    }
+  }
+]

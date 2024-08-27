@@ -16,7 +16,7 @@ $currentScore = $sql3->fetch_assoc();
 if ($score > $currentScore[$game]){
     $conn->query("UPDATE leaderboard SET {$game} = {$score} WHERE Username='{$_SESSION['user_name']}'");
     //update total
-    $sql2 = $conn->query("SELECT (Trivia + Memotest + Puzzle + Rush) AS SUM FROM leaderboard WHERE Username='{$_SESSION['user_name']}'");
+    $sql2 = $conn->query("SELECT (Trivia + Memotest + Puzzle + Rush + Fist) AS SUM FROM leaderboard WHERE Username='{$_SESSION['user_name']}'");
     
     $total = $sql2->fetch_assoc();
     $conn->query("UPDATE leaderboard SET Total = {$total['SUM']} WHERE Username='{$_SESSION['user_name']}'");

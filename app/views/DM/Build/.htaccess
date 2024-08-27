@@ -1,0 +1,2 @@
+Header set Content-Encoding: br
+Header set Content-Type: application/wasm

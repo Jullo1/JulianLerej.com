@@ -10,9 +10,6 @@ class Game_Controller {
     }
     
     public function index($gameName){
-        if (!is_user_auth()) {
-            echo "<script>location.replace('login')</script>";
-        }
         require VIEW . $gameName . ".html";
     }
     

@@ -2,6 +2,7 @@
 
 
 require_once "app/models/Registration_Model.php";
+require_once "app/controllers/Login_Controller.php";
 
 class Registration_Controller {
     
@@ -20,16 +21,15 @@ class Registration_Controller {
         $user = (object) $_POST;
         try{
             $user->id = $this->model->set_user($user);
-      
-            set_user_auth(true);
+            
             $_SESSION["user_id"] = $user->id;
             $_SESSION["user_name"] =  $user->name;
             $_SESSION["user_email"] = $user->email;
+            $_SESSION["user_guest"] = false;
             
             $this->send_mail($user);
-            echo "Registration success. <a href=\"../login\">Login</a>.";
-            session_destroy();
-            set_user_auth(false);
+            set_user_auth(true);
+            echo "<script>location.assign('../main')</script>";
             
         }catch (Exception $e) {
             http_response_code(422);
@@ -37,7 +37,6 @@ class Registration_Controller {
         }
         
     }
-       
 
 
     private function send_mail($data){
