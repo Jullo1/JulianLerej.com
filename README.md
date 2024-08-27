@@ -1,4 +1,7 @@
 # JulianLerej.com
-My personal portfolio website https://julianlerej.com/ including the Unity WebGL builds.
+My personal portfolio website https://julianlerej.com/ including the Unity WebGL builds!
 
-Inside /include/ DB.SQL contains the database structure, and config.php the webmail and database read/write credentials.
+# Setup
+Go to the /include/ folder.
+DB.SQL contains the database structure, create a new database and import.
+Then, config.php has the webmail and database read/write credentials.
